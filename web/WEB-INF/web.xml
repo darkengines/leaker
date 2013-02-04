@@ -5,20 +5,12 @@
         <listener-class>leaker.Bootstrap</listener-class>
     </listener>
     <servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>leaker.test</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Setup</servlet-name>
-        <servlet-class>leaker.Setup</servlet-class>
+        <servlet-class>leaker.Install</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>test</servlet-name>
-        <url-pattern>/test</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Setup</servlet-name>
-        <url-pattern>/Setup</url-pattern>
+        <url-pattern>/setup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

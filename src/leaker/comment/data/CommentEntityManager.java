@@ -1,4 +1,4 @@
-package leaker.user.data;
+package leaker.comment.data;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -10,15 +10,14 @@ import leaker.database.EntityManager;
 
 import com.mysql.jdbc.PreparedStatement;
 
-public class UserEntityManager extends EntityManager<User> {
+public class CommentEntityManager extends EntityManager<Comment> {
 	
-	public User map(ResultSet resultSet) throws SQLException {
-		User user = new User();
-		user.setId(resultSet.getLong("id"));
-		user.setEmail(resultSet.getString("email"));
-		user.setPassword(resultSet.getString("password"));
-		user.setDisplayName(resultSet.getString("display_name"));
-		return user;
+	public Comment map(ResultSet resultSet) throws SQLException {
+		Comment comment = new Comment();
+		comment.setId(resultSet.getLong("id"));
+		comment.setContent(resultSet.getString("email"));
+		comment.setAuthorId(resultSet.getLong("user_id"));
+		return comment;
 	}
 
 	public void installTables() throws UnsupportedEncodingException, IOException, SQLException {
@@ -29,20 +28,20 @@ public class UserEntityManager extends EntityManager<User> {
 		statement.close();
 	}
 
-	public User insertUser(User user) throws UnsupportedEncodingException, IOException, SQLException {
-		String query = getQuery("insert_user.sql");
+	public Comment insertComment(Comment comment) throws UnsupportedEncodingException, IOException, SQLException {
+		String query = getQuery("insert_comment.sql");
 		PreparedStatement ps = (PreparedStatement) DBSession.Current().Connection().prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-		ps.setObject(1, user.getEmail());
-		ps.setObject(2, user.getPassword());
-		ps.setObject(3, user.getDisplayName());
+		ps.setObject(1, comment.getContent());
+		ps.setObject(2, comment.getAuthorId());
+		ps.setObject(3, comment.getMessageId());
 		ps.executeUpdate();
 		ResultSet generatedKeys = ps.getGeneratedKeys();
 		if (generatedKeys.next()) {
-			user.setId(generatedKeys.getLong(1));
+			comment.setId(generatedKeys.getLong(1));
 		} else {
 			throw new SQLException("Creating user failed, no generated key obtained.");
 		}
 		ps.close();
-		return user;
+		return comment;
 	}
 }

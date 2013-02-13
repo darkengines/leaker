@@ -9,13 +9,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <listener>
-        <description>current application bootstrap</description>
-        <listener-class>leaker.core.Bootstrap</listener-class>
+    <description>current application bootstrap</description>
+    <listener-class>leaker.core.Bootstrap</listener-class>
   </listener>
-  
-  <servlet><servlet-name>test</servlet-name><servlet-class>leaker.test</servlet-class></servlet>
-  <servlet-mapping><servlet-name>test</servlet-name><url-pattern>/test</url-pattern></servlet-mapping>
-  
+  <servlet>
+    <servlet-name>create_user</servlet-name>
+    <servlet-class>leaker.web.CreateUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>create_user</servlet-name>
+    <url-pattern>/create_user</url-pattern>
+  </servlet-mapping>
 </web-app>

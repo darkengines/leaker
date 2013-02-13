@@ -1,0 +1,1 @@
+INSERT INTO `message` (`content`, `user_id`) VALUES (?, ?);

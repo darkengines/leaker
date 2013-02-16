@@ -1,1 +1,0 @@
-INSERT INTO `comment` (`content`, `user_id`, `message_id`) VALUES (?, ?, ?);

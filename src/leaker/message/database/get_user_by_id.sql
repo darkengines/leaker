@@ -1,0 +1,1 @@
+INSERT INTO `user` (`login`, `password`, `lastname`, `firstname`, `date_in`) VALUES (?, ?, ?, ?, NOW());

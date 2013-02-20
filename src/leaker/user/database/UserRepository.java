@@ -108,7 +108,23 @@ public class UserRepository {
 		connection.close();
 		return user;
 	}
-
+	
+	public static User getUserByCredential(User user) throws ClassNotFoundException, SQLException, NamingException, UnsupportedEncodingException, IOException {
+		Connection connection = Database.getConnection();
+		String query = getQuery("get_user_by_credential.sql");
+		PreparedStatement ps = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+		ps.setObject(1, user.getLogin());
+		ps.setObject(2, user.getPassword());
+		ResultSet result = ps.executeQuery();
+		User returnedUser = null;
+		if (result.next()) {
+			returnedUser = map(result);
+		}
+		ps.close();
+		connection.close();
+		return returnedUser;
+	}
+	
 	public static void deleteUser(User user) throws ClassNotFoundException, SQLException, NamingException, UnsupportedEncodingException, IOException {
 		Connection connection = Database.getConnection();
 		String query = getQuery("delete_user.sql");

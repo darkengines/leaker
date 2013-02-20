@@ -8,7 +8,7 @@ import javax.naming.NamingException;
 
 import leaker.user.User;
 import leaker.user.database.UserRepository;
-import leaker.web.user.exception.UserAlreadyExistsException;
+import leaker.user.exception.UserAlreadyExistsException;
 
 import org.json.JSONException;
 

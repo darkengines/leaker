@@ -1,4 +1,4 @@
-package leaker.web.user.exception;
+package leaker.user.exception;
 
 import leaker.core.exception.ManagedException;
 import leaker.user.User;

@@ -1,0 +1,1 @@
+INSERT INTO `session` (`user_id`, `token`, `date`, `expired`) VALUES (?, ?, NOW(), 0 );

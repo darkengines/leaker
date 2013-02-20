@@ -1,0 +1,1 @@
+INSERT INTO `friend` (`left_user_id`, `right_user_id`) VALUES (?, ?);

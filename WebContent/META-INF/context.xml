@@ -5,6 +5,6 @@
 		maxActive="100" maxIdle="30" maxWait="10000"
 		url="jdbc://127.0.0.1/leaker"
 		driverClassName="com.mysql.jdbc.Driver"
-		userName="root" password="2701104$reg2rt"
+		userName="root" password="pass"
 	/>
 </Context>
